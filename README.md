@@ -1,1 +1,1 @@
-# -javascript-lint-project
+# javascript-lint-project
