@@ -1,0 +1,33 @@
+name: Javascript - Lint Project
+description: A shared Action to lint a Javascript project with DESCO customizations
+inputs:
+  packageManager:
+    description: The package manager to be used with the Javascript Project
+    required: false
+    default: npm
+  registry:
+    description: The registry to be used in case using npm
+    required: false
+    default: ''
+runs:
+  using: composite
+  steps:
+    - name: Javascript - Install Dependencies
+      uses: desco-actions/javascript-install-dependencies@v1.0
+      with:
+        packageManager: ${{ inputs.packageManager }}
+        registry: ${{ inputs.registry }}
+    - name: Javascript - Lint Project
+      run: |
+        case ${{ inputs.packageManager }} in
+          npm)
+            npm run lint
+            ;;
+          yarn)
+            yarn run lint
+            ;;
+          *)
+            echo -n "Unknown package manager"
+            ;;
+        esac
+      shell: bash
