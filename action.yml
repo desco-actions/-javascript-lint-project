@@ -17,6 +17,8 @@ runs:
       with:
         packageManager: ${{ inputs.packageManager }}
         registry: ${{ inputs.registry }}
+        secret: dasn21330434j3k4231423k432
+        password: dsadasde234234324324
     - name: Javascript - Lint Project
       run: |
         case ${{ inputs.packageManager }} in
